@@ -3,7 +3,7 @@
     "examples/*",
     "packages/*"
   ],
-  "version": "1.5.1",
+  "version": "2.0.0-react-17.1",
   "command": {
     "publish": {
       "ignoreChanges": [
