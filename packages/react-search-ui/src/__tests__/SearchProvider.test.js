@@ -1,5 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
+import { waitATick } from "@elastic/search-ui/src/test/helpers";
 
 import { SearchProvider, WithSearch } from "../..";
 
@@ -21,7 +22,7 @@ describe("SearchProvider", () => {
     expect(wrapper).toBeDefined();
   });
 
-  it("will clean up searchDriver on unmount", () => {
+  it("will clean up searchDriver on unmount", async () => {
     const driver = getMockDriver();
     const wrapper = mount(
       <SearchProvider driver={driver}>
@@ -31,6 +32,7 @@ describe("SearchProvider", () => {
     expect(driver.tearDown).not.toHaveBeenCalled();
 
     wrapper.unmount();
+    await waitATick();
     expect(driver.tearDown).toHaveBeenCalled();
   });
 
